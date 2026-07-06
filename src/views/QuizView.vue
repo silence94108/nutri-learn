@@ -73,7 +73,7 @@ function optionClass(i) {
       <div v-if="!started" class="quiz-intro card">
         <span class="intro-ic"><AppIcon name="quiz" :size="34" /></span>
         <h2>准备好了吗？</h2>
-        <p>共 {{ total }} 道单选题，涵盖营养素、膳食指南、常见误区。每答一题立即显示解析，最后给出成绩。</p>
+        <p>共 {{ total }} 道单选题，涵盖营养素、膳食指南、常见误区、热量计算。每答一题立即显示解析，最后给出成绩。</p>
         <button class="btn btn-primary" @click="start">开始答题</button>
       </div>
 
@@ -102,6 +102,7 @@ function optionClass(i) {
         </div>
 
         <div class="question-card card">
+          <span class="q-module">{{ currentQuestion.module }}</span>
           <h3 class="q-text">{{ currentQuestion.question }}</h3>
           <div class="options">
             <button v-for="(opt, i) in currentQuestion.options" :key="i" class="option" :class="optionClass(i)" @click="selectOption(i)" :disabled="answered">
@@ -142,6 +143,7 @@ function optionClass(i) {
 .pg-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--mint));border-radius:var(--r-full);transition:width .3s}
 
 .question-card{padding:30px}
+.q-module{display:inline-block;font-size:12px;font-weight:600;color:var(--green-2);background:var(--green-3);padding:4px 12px;border-radius:var(--r-full);margin-bottom:14px}
 .q-text{font-size:20px;font-weight:700;margin-bottom:22px;line-height:1.5}
 .options{display:flex;flex-direction:column;gap:12px}
 .option{display:flex;align-items:center;gap:14px;padding:15px 18px;border-radius:var(--r-md);background:var(--bg);text-align:left;font-size:15px;border:1.5px solid transparent;transition:.2s}
