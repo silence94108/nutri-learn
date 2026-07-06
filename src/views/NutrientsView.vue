@@ -1,17 +1,19 @@
 <script setup>
 import { ref, computed } from 'vue'
-import { nutrients, nutrientCategories } from '../data/nutrients.js'
+import { nutrients, nutrientGroups, groupIntros } from '../data/nutrients.js'
 import AppIcon from '../components/AppIcon.vue'
 
-const activeCategory = ref('全部')
+const activeGroup = ref('全部')
 const selected = ref(null)
 
-const categories = ['全部', ...nutrientCategories]
+const groups = ['全部', ...nutrientGroups]
 
 const filtered = computed(() => {
-  if (activeCategory.value === '全部') return nutrients
-  return nutrients.filter(n => n.category === activeCategory.value)
+  if (activeGroup.value === '全部') return nutrients
+  return nutrients.filter(n => n.group === activeGroup.value)
 })
+
+const activeIntro = computed(() => activeGroup.value === '全部' ? '' : (groupIntros[activeGroup.value] || ''))
 
 function openDetail(n) {
   selected.value = n
@@ -32,10 +34,13 @@ function closeDetail() {
         <p class="page-subtitle">整个营养学的地基。点开每张卡片，看它管什么、从哪来、有啥误区。</p>
       </div>
 
-      <!-- 分类筛选 -->
+      <!-- 分组筛选 -->
       <div class="filter-bar">
-        <button v-for="cat in categories" :key="cat" class="filter-chip" :class="{ active: activeCategory === cat }" @click="activeCategory = cat">{{ cat }}</button>
+        <button v-for="g in groups" :key="g" class="filter-chip" :class="{ active: activeGroup === g }" @click="activeGroup = g">{{ g }}</button>
       </div>
+
+      <!-- 组概述 -->
+      <p v-if="activeIntro" class="group-intro">{{ activeIntro }}</p>
 
       <!-- 卡片网格 -->
       <div class="nut-grid">
@@ -60,7 +65,7 @@ function closeDetail() {
             <div class="modal-header">
               <span class="modal-ic"><AppIcon :name="selected.icon" :size="30" /></span>
               <div>
-                <h2>{{ selected.name }}</h2>
+                <h2>{{ selected.name }}<span v-if="selected.alias" class="alias">{{ selected.alias }}</span></h2>
                 <div class="modal-badges"><span class="chip">{{ selected.category }}</span><span class="energy-badge num">{{ selected.energy }}</span></div>
               </div>
             </div>
@@ -102,6 +107,7 @@ function closeDetail() {
 .filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
 .filter-chip{padding:9px 18px;border-radius:var(--r-full);font-size:14px;font-weight:500;background:var(--card);color:var(--gray);box-shadow:var(--sh-sm);transition:.2s}
 .filter-chip.active{background:var(--green);color:#fff;box-shadow:var(--sh-green)}
+.group-intro{font-size:14px;color:var(--gray);background:var(--green-4);border-left:3px solid var(--green);border-radius:var(--r-md);padding:12px 16px;margin-bottom:22px;line-height:1.7}
 
 .nut-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .nut{background:var(--card);border-radius:var(--r-lg);padding:24px;box-shadow:var(--sh-sm);cursor:pointer;transition:.2s;position:relative;overflow:hidden}
@@ -124,6 +130,7 @@ function closeDetail() {
 .modal-header{display:flex;gap:16px;align-items:center;margin-bottom:20px}
 .modal-ic{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;color:#fff;background:var(--ac);flex:none}
 .modal-header h2{font-size:24px;font-weight:800}
+.modal-header h2 .alias{font-size:13px;font-weight:500;color:var(--faint);margin-left:10px}
 .modal-badges{display:flex;gap:8px;margin-top:8px}
 .energy-badge{font-size:12px;font-weight:600;color:#fff;background:var(--ac);padding:4px 12px;border-radius:var(--r-full)}
 .modal-summary{font-size:15px;background:var(--green-4);padding:16px;border-radius:var(--r-md);margin-bottom:20px;line-height:1.7}

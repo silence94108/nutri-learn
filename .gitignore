@@ -28,9 +28,13 @@ pnpm-debug.log*
 *.sw?
 .history
 
+.playwright-mcp
+
 # OS
 .DS_Store
 Thumbs.db
 
 # Claude local settings
 .claude
+# Playwright MCP
+.playwright-mcp/
