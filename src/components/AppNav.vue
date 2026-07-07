@@ -13,6 +13,7 @@ const links = [
   { to: '/calculator', label: '热量计算' },
   { to: '/foods', label: '食物速查' },
   { to: '/recipes', label: '每日食谱' },
+  { to: '/topics', label: '知识专题' },
   { to: '/quiz', label: '知识自测' }
 ]
 
@@ -61,7 +62,7 @@ function closeMenu() {
 @media(max-width:820px){
   .menu-toggle{display:grid;place-items:center}
   .nav-links{position:absolute;top:70px;left:0;right:0;flex-direction:column;background:var(--card);border-bottom:1px solid var(--line);padding:10px;gap:3px;max-height:0;overflow:hidden;transition:max-height .3s ease;box-shadow:var(--sh-md)}
-  .nav-links.open{max-height:420px}
+  .nav-links.open{max-height:560px}
   .nav-link{padding:12px 16px}
 }
 </style>

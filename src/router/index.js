@@ -8,6 +8,7 @@ const routes = [
   { path: '/calculator', name: 'calculator', component: () => import('../views/CalculatorView.vue'), meta: { title: '热量计算器' } },
   { path: '/foods', name: 'foods', component: () => import('../views/FoodsView.vue'), meta: { title: '食物速查' } },
   { path: '/recipes', name: 'recipes', component: () => import('../views/RecipesView.vue'), meta: { title: '每日食谱' } },
+  { path: '/topics', name: 'topics', component: () => import('../views/TopicsView.vue'), meta: { title: '知识专题' } },
   { path: '/quiz', name: 'quiz', component: () => import('../views/QuizView.vue'), meta: { title: '知识自测' } }
 ]
 

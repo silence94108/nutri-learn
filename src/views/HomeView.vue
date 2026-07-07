@@ -34,7 +34,8 @@ const modules = [
   { to: '/calculator', icon: 'calc', color: '#ffc24b', title: '热量计算器', desc: '算出你的每日能量需求与三大营养素克数' },
   { to: '/foods', icon: 'search', color: '#48c6e8', title: '食物速查', desc: '常见食物的热量与营养成分，随手查' },
   { to: '/recipes', icon: 'bowl', color: '#b78bd9', title: '每日食谱', desc: '减脂、增肌、均衡、食疗四种目标的一日三餐参考' },
-  { to: '/quiz', icon: 'quiz', color: '#f4849b', title: '知识自测', desc: '刷题巩固，带解析，破除常见营养误区' }
+  { to: '/topics', icon: 'target', color: '#7c9cf0', title: '知识专题', desc: '谣言粉碎、看懂标签、缺乏症识别、特殊人群怎么吃' },
+  { to: '/quiz', icon: 'quiz', color: '#f4849b', title: '知识自测', desc: '刷题巩固，带解析，破除常见营养误区', full: true }
 ]
 </script>
 
@@ -119,9 +120,9 @@ const modules = [
     <div class="wrap">
       <!-- 五大模块 -->
       <section class="section">
-        <div class="sec-head"><div><h2>六大学习模块</h2><div class="sub">点开任意一个，开始你的营养学之旅</div></div></div>
+        <div class="sec-head"><div><h2>七大学习模块</h2><div class="sub">点开任意一个，开始你的营养学之旅</div></div></div>
         <div class="mod-grid">
-          <RouterLink class="mod" v-for="m in modules" :key="m.to" :to="m.to">
+          <RouterLink class="mod" v-for="m in modules" :key="m.to" :to="m.to" :style="m.full ? { gridColumn: '1 / -1' } : {}">
             <span class="mi" :style="{ background: m.color }"><AppIcon :name="m.icon" :size="26" /></span>
             <div class="body"><h3>{{ m.title }}</h3><p>{{ m.desc }}</p></div>
             <span class="go"><AppIcon name="arrow" :size="18" /></span>
@@ -212,5 +213,6 @@ const modules = [
   .hero h1{font-size:36px}
   .stat-row{grid-template-columns:1fr 1fr}
   .nut-grid,.path,.mod-grid{grid-template-columns:1fr}
+  .mod[style]{grid-column:auto!important}
 }
 </style>
