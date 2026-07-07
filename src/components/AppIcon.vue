@@ -12,6 +12,8 @@ defineProps({
 const paths = {
   // 品牌 / 通用
   leaf: '<path d="M12 21c4-2.5 7-6 7-11a7 7 0 0 0-14 0c0 5 3 8.5 7 11z"/><path d="M12 8v7M9 11h6"/>',
+  // 品牌 logo：碗里长出嫩芽（把营养学吃进日常里）
+  sprout: '<path d="M4 13h16a8 8 0 0 1-16 0z"/><path d="M12 13V8"/><path d="M12 8c0-3 2-5 5.5-5C17.5 6 15.5 8 12 8z"/><path d="M12 10c0-2.2-1.5-3.6-4-3.6 0 2.2 1.5 3.6 4 3.6z"/>',
   home: '<path d="M4 11 12 4l8 7"/><path d="M6 10v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-9"/>',
   arrow: '<path d="m9 6 6 6-6 6"/>',
   arrowRight: '<path d="M5 12h14M13 6l6 6-6 6"/>',

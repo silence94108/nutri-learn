@@ -26,7 +26,7 @@ function closeMenu() {
   <header class="nav">
     <div class="wrap nav-in">
       <RouterLink to="/home" class="brand" @click="closeMenu">
-        <span class="logo"><AppIcon name="leaf" :size="20" /></span>
+        <span class="logo"><AppIcon name="sprout" :size="20" /></span>
         团团营养学
       </RouterLink>
 
