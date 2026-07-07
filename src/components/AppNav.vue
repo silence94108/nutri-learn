@@ -12,6 +12,7 @@ const links = [
   { to: '/guide', label: '膳食指南' },
   { to: '/calculator', label: '热量计算' },
   { to: '/foods', label: '食物速查' },
+  { to: '/recipes', label: '每日食谱' },
   { to: '/quiz', label: '知识自测' }
 ]
 

@@ -15,10 +15,10 @@ const nutrients = [
 ]
 
 const stats = [
-  { n: '6', l: '大营养素', icon: 'book', bg: '#e6f7f0', fg: '#00996a' },
+  { n: '23', l: '种营养素', icon: 'book', bg: '#e6f7f0', fg: '#00996a' },
   { n: '8', l: '膳食准则', icon: 'guide', bg: '#fff1e8', fg: '#ff8a5b' },
-  { n: '30+', l: '常见食物', icon: 'search', bg: '#e8f6fb', fg: '#48c6e8' },
-  { n: '10', l: '道自测题', icon: 'quiz', bg: '#fdeef2', fg: '#f4849b' }
+  { n: '61', l: '常见食物', icon: 'search', bg: '#e8f6fb', fg: '#48c6e8' },
+  { n: '38', l: '道自测题', icon: 'quiz', bg: '#fdeef2', fg: '#f4849b' }
 ]
 
 const steps = [
@@ -29,11 +29,12 @@ const steps = [
 ]
 
 const modules = [
-  { to: '/nutrients', icon: 'book', color: '#00b578', title: '营养素图鉴', desc: '六大营养素逐个拆解，功能、来源、误区一目了然' },
+  { to: '/nutrients', icon: 'book', color: '#00b578', title: '营养素图鉴', desc: '细分营养素逐个拆解，功能、来源、误区一目了然' },
   { to: '/guide', icon: 'guide', color: '#ff8a5b', title: '膳食指南', desc: '《中国居民膳食指南 2022》八条准则通俗解读' },
   { to: '/calculator', icon: 'calc', color: '#ffc24b', title: '热量计算器', desc: '算出你的每日能量需求与三大营养素克数' },
   { to: '/foods', icon: 'search', color: '#48c6e8', title: '食物速查', desc: '常见食物的热量与营养成分，随手查' },
-  { to: '/quiz', icon: 'quiz', color: '#f4849b', title: '知识自测', desc: '刷题巩固，带解析，破除常见营养误区', full: true }
+  { to: '/recipes', icon: 'bowl', color: '#b78bd9', title: '每日食谱', desc: '减脂、增肌、均衡、食疗四种目标的一日三餐参考' },
+  { to: '/quiz', icon: 'quiz', color: '#f4849b', title: '知识自测', desc: '刷题巩固，带解析，破除常见营养误区' }
 ]
 </script>
 
@@ -118,9 +119,9 @@ const modules = [
     <div class="wrap">
       <!-- 五大模块 -->
       <section class="section">
-        <div class="sec-head"><div><h2>五大学习模块</h2><div class="sub">点开任意一个，开始你的营养学之旅</div></div></div>
+        <div class="sec-head"><div><h2>六大学习模块</h2><div class="sub">点开任意一个，开始你的营养学之旅</div></div></div>
         <div class="mod-grid">
-          <RouterLink class="mod" v-for="m in modules" :key="m.to" :to="m.to" :style="m.full ? { gridColumn: '1 / -1' } : {}">
+          <RouterLink class="mod" v-for="m in modules" :key="m.to" :to="m.to">
             <span class="mi" :style="{ background: m.color }"><AppIcon :name="m.icon" :size="26" /></span>
             <div class="body"><h3>{{ m.title }}</h3><p>{{ m.desc }}</p></div>
             <span class="go"><AppIcon name="arrow" :size="18" /></span>
@@ -211,6 +212,5 @@ const modules = [
   .hero h1{font-size:36px}
   .stat-row{grid-template-columns:1fr 1fr}
   .nut-grid,.path,.mod-grid{grid-template-columns:1fr}
-  .mod[style]{grid-column:auto!important}
 }
 </style>
